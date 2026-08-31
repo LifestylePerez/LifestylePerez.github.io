@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifestyle Perez</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#111;background:#fff}
+button{font-family:inherit;cursor:pointer}
+a{text-decoration:none;color:inherit}
+:root{--cyan:#55dce5;--dark:#17b9c5;--light:#effdfe}
+
+.top{background:var(--cyan);color:white;text-align:center;padding:9px;font-size:12px;font-weight:bold}
+header{background:white;border-bottom:1px solid #eee;position:sticky;top:0;z-index:20}
+.nav{max-width:1200px;margin:auto;padding:13px 18px;display:flex;align-items:center;gap:25px}
+.logo{font-weight:900;font-size:24px;line-height:.8;letter-spacing:-1px}
+.logo span{display:block;color:var(--dark);font-style:italic;font-size:29px}
+.logo small{display:block;font-size:7px;letter-spacing:.5px;margin-top:7px}
+.menu{display:flex;gap:18px;margin-left:auto}
+.menu button{background:none;border:0;font-size:12px;font-weight:900}
+.menu button:hover{color:var(--dark)}
+.cart-button{border:0;background:none;font-size:23px;position:relative}
+.cart-count{position:absolute;top:-7px;right:-7px;background:var(--dark);color:white;border-radius:50%;font-size:9px;padding:3px 6px}
+
+.hero{background:linear-gradient(120deg,#fff,var(--light))}
+.hero-inner{max-width:1200px;margin:auto;padding:65px 20px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}
+.hero h1{font-size:clamp(50px,7vw,85px);line-height:.82;letter-spacing:-5px}
+.hero h1 span{color:var(--dark);font-style:italic}
+.hero p{font-size:20px;font-weight:bold;margin:22px 0}
+.btn{border:0;background:var(--cyan);color:white;border-radius:8px;padding:13px 22px;font-weight:900}
+.btn:hover{background:var(--dark)}
+.hero-img{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hero-box{background:white;border-radius:18px;min-height:145px;display:flex;align-items:center;justify-content:center;font-size:70px;box-shadow:0 8px 25px #b9e9ed}
+.hero-box.big{grid-row:span 2;min-height:305px;font-size:105px}
+
+.info{max-width:1100px;margin:-25px auto 0;position:relative;background:white;border-radius:15px;box-shadow:0 8px 25px #ddd;display:grid;grid-template-columns:repeat(4,1fr);padding:14px}
+.info div{padding:12px 18px;border-right:1px solid #eee;font-size:12px}
+.info div:last-child{border:0}
+.info b{display:block}
+.info small{color:#666}
+
+main{max-width:1200px;margin:auto}
+section{padding:60px 20px}
+.title{text-align:center;font-size:28px;margin-bottom:30px}
+.title:after{content:"";display:block;width:50px;height:4px;background:var(--cyan);margin:10px auto;border-radius:5px}
+
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.category{border:1px solid #e5eeee;border-radius:15px;overflow:hidden;background:white;transition:.2s}
+.category:hover{transform:translateY(-4px);box-shadow:0 8px 25px #d5f4f5}
+.category-img{height:145px;background:linear-gradient(140deg,#e8fcfd,#f5f5f5);display:flex;align-items:center;justify-content:center;font-size:65px}
+.category-content{text-align:center;padding:14px}
+.category-content h3{font-size:13px;margin-bottom:10px}
+.outline{border:1px solid var(--cyan);background:white;color:var(--dark);padding:8px 12px;border-radius:7px;font-weight:bold}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{border:1px solid #e5eeee;border-radius:14px;overflow:hidden;position:relative;background:white}
+.photo{height:245px;background:linear-gradient(140deg,#effdfe,#f3f3f3);display:flex;align-items:center;justify-content:center;font-size:90px}
+.product-info{padding:14px}
+.product-info h3{font-size:15px;margin-bottom:7px}
+.price{font-size:19px;font-weight:900;margin-bottom:7px}
+.sizes{font-size:11px;color:#777;margin-bottom:12px}
+.add{width:100%;border:0;background:var(--cyan);color:white;border-radius:7px;padding:11px;font-weight:900}
+.add:hover{background:var(--dark)}
+.new{position:absolute;top:9px;left:9px;background:var(--cyan);color:white;padding:5px 8px;border-radius:20px;font-size:9px;font-weight:bold}
+
+.category-page{display:none}
+.category-page.active{display:block}
+.back{border:0;background:none;color:var(--dark);font-weight:bold;margin-bottom:20px;font-size:14px}
+
+.social{margin:20px;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;border:2px solid var(--cyan);border-radius:15px;padding:25px}
+.social h3{color:var(--dark);margin-bottom:8px}
+.social a{font-weight:bold;display:block;margin:7px}
+
+footer{background:#fafdfd;border-top:1px solid #eee;padding:40px 20px}
+.footer{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footer h4{margin-bottom:10px}
+.footer a{display:block;color:#666;margin:8px 0;font-size:13px}
+.copy{max-width:1100px;margin:25px auto 0;padding-top:15px;border-top:1px solid #eee;color:#777;font-size:12px}
+
+.whatsapp{position:fixed;right:18px;bottom:18px;width:57px;height:57px;border-radius:50%;background:#20c96b;color:white;display:flex;align-items:center;justify-content:center;font-size:24px;z-index:25}
+
+#cartOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40}
+#cartOverlay.open{display:block}
+#cart{position:fixed;right:-430px;top:0;width:min(420px,100%);height:100vh;background:white;z-index:50;transition:.3s;padding:20px;display:flex;flex-direction:column;box-shadow:-8px 0 25px #555}
+#cart.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px}
+.close{border:0;background:none;font-size:28px}
+.cart-list{flex:1;overflow:auto;padding:10px 0}
+.cart-item{border-bottom:1px solid #eee;padding:14px 0}
+.cart-row{display:flex;justify-content:space-between;gap:10px}
+.qty{display:flex;align-items:center;gap:9px;margin-top:10px}
+.qty button{border:1px solid #ddd;background:white;width:29px;height:29px;border-radius:5px}
+.remove{border:0;background:none;color:#d33;font-size:11px;margin-top:7px}
+.cart-total{font-size:20px;font-weight:900;border-top:1px solid #eee;padding-top:15px}
+.checkout{width:100%;margin-top:12px;border:0;background:#20c96b;color:white;border-radius:8px;padding:14px;font-weight:900}
+
+@media(max-width:950px){
+.menu{display:none}.categories{grid-template-columns:repeat(3,1fr)}
+.products{grid-template-columns:repeat(2,1fr)}
+.info{grid-template-columns:1fr 1fr;margin:0 15px}.info div{border:0}
+}
+@media(max-width:600px){
+.nav{padding:12px}.menu{display:flex;overflow-x:auto;gap:10px;margin-left:auto}.menu button{font-size:9px;white-space:nowrap}
+.hero-inner{grid-template-columns:1fr;text-align:center;padding:50px 15px}
+.categories{grid-template-columns:1fr 1fr}.products{grid-template-columns:1fr 1fr;gap:10px}
+.category-img{height:120px;font-size:52px}.photo{height:180px;font-size:65px}
+.info{grid-template-columns:1fr}.info div{border-bottom:1px solid #eee}
+.social{grid-template-columns:1fr;gap:25px}.footer{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="top">FRETE GRÁTIS PARA PALOTINA - PR 🇧🇷 &nbsp; | &nbsp; ENVIO PARA TODO O BRASIL &nbsp; | &nbsp; PIX OU DINHEIRO</div>
+
+<header>
+<div class="nav">
+<button class="logo" onclick="showHome()" style="border:0;background:none;text-align:left">LIFESTYLE<span>PEREZ</span><small>vista o corre, viva o propósito.</small></button>
+<nav class="menu">
+<button onclick="showCategory('bones')">BONÉS</button>
+<button onclick="showCategory('polos')">POLOS</button>
+<button onclick="showCategory('times')">CAMISAS DE TIME</button>
+<button onclick="showCategory('shorts')">SHORTS</button>
+<button onclick="showCategory('casacos')">CASACOS/MOLETONS</button>
+</nav>
+<button class="cart-button" onclick="openCart()">🛍️<span class="cart-count" id="cartCount">0</span></button>
+</div>
+</header>
+
+<main>
+<div id="home">
+<div class="hero">
+<div class="hero-inner">
+<div><h1>LIFESTYLE<br><span>PEREZ</span></h1><p>vista o corre, viva o propósito.</p><button class="btn" onclick="showCategory('bones')">VER PRODUTOS</button></div>
+<div class="hero-img"><div class="hero-box big">🧢</div><div class="hero-box">👕</div><div class="hero-box">🩳</div></div>
+</div>
+</div>
+
+<div class="info">
+<div>🚚 <b>FRETE GRÁTIS</b><small>Palotina - PR</small></div>
+<div>💠 <b>PAGAMENTO</b><small>Pix ou dinheiro</small></div>
+<div>📦 <b>ENVIO NACIONAL</b><small>Todo o Brasil</small></div>
+<div>🔒 <b>COMPRA SEGURA</b><small>Pedido pelo WhatsApp</small></div>
+</div>
+
+<section>
+<h2 class="title">CATEGORIAS</h2>
+<div class="categories">
+<div class="category" onclick="showCategory('bones')"><div class="category-img">🧢</div><div class="category-content"><h3>BONÉS</h3><button class="outline">VER TODOS</button></div></div>
+<div class="category" onclick="showCategory('polos')"><div class="category-img">👕</div><div class="category-content"><h3>POLOS</h3><button class="outline">VER TODOS</button></div></div>
+<div class="category" onclick="showCategory('times')"><div class="category-img">⚽</div><div class="category-content"><h3>CAMISAS DE TIME</h3><button class="outline">VER TODOS</button></div></div>
+<div class="category" onclick="showCategory('shorts')"><div class="category-img">🩳</div><div class="category-content"><h3>SHORTS</h3><button class="outline">VER TODOS</button></div></div>
+<div class="category" onclick="showCategory('casacos')"><div class="category-img">🧥</div><div class="category-content"><h3>CASACOS/MOLETONS</h3><button class="outline">VER TODOS</button></div></div>
+</div>
+</section>
+
+<section>
+<h2 class="title">DESTAQUES</h2>
+<div class="products" id="highlights"></div>
+</section>
+
+<div class="social">
+<div><h3>INSTAGRAM</h3><a href="https://instagram.com/lifestyle.perez" target="_blank">@lifestyle.perez</a><h3>TIKTOK</h3><a href="https://tiktok.com/@lifestyle.perez" target="_blank">@lifestyle.perez</a></div>
+<div><h3>WHATSAPP</h3><p>(44) 99740-6250</p><br><a class="btn" href="https://wa.me/5544997406250" target="_blank">FALAR NO WHATSAPP</a></div>
+<div><h3>PAGAMENTO</h3><p>💠 Pix</p><p>💵 Dinheiro</p></div>
+</div>
+</div>
+
+<div id="pages"></div>
+</main>
+
+<footer>
+<div class="footer">
+<div><div class="logo">LIFESTYLE<span>PEREZ</span></div><p>vista o corre, viva o propósito.</p></div>
+<div><h4>ATENDIMENTO</h4><a href="https://wa.me/5544997406250">WhatsApp</a><a href="https://instagram.com/lifestyle.perez">Instagram</a><a href="https://tiktok.com/@lifestyle.perez">TikTok</a></div>
+<div><h4>PAGAMENTO</h4><p>Pix ou dinheiro</p></div>
+</div>
+<div class="copy">© 2026 Lifestyle Perez. Todos os direitos reservados.</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5544997406250" target="_blank">◉</a>
+
+<div id="cartOverlay" onclick="closeCart()"></div>
+<aside id="cart">
+<div class="cart-head"><h2>Meu carrinho</h2><button class="close" onclick="closeCart()">×</button></div>
+<div class="cart-list" id="cartList"></div>
+<div class="cart-total" id="cartTotal">Total: R$ 0,00</div>
+<button class="checkout" onclick="checkout()">FINALIZAR PEDIDO PELO WHATSAPP</button>
+</aside>
+
+<script>
+const data={
+bones:{title:"Bonés",price:69.90,emoji:"🧢",sizes:"Único",names:["Boné Lifestyle","Boné Classic","Boné Street","Boné Perez","Boné Basic","Boné Premium"]},
+polos:{title:"Polos Clássicas",price:89.90,emoji:"👕",sizes:"P, M, G, GG",names:["Polo Classic Branca","Polo Classic Preta","Polo Classic Ciano","Polo Basic","Polo Street","Polo Perez"]},
+times:{title:"Camisas de Time",price:79.90,emoji:"⚽",sizes:"P, M, G, GG, XG",names:["Camisa de Time 01","Camisa de Time 02","Camisa de Time 03","Camisa de Time 04","Camisa de Time 05","Camisa de Time 06"]},
+shorts:{title:"Shorts",price:99.90,emoji:"🩳",sizes:"P, M, G, GG",names:["Shorts Street","Shorts Basic","Shorts Lifestyle","Shorts Sport","Shorts Classic","Shorts Perez"]},
+casacos:{title:"Casacos / Moletons",price:169.90,emoji:"🧥",sizes:"P, M, G, GG, XG",names:["Moletom Lifestyle","Moletom Classic","Moletom Street","Moletom Perez","Casaco Basic","Casaco Premium"]}
+};
+
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("lp_cart")||"[]")}catch(e){cart=[]}
+
+function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+
+function card(cat,i){
+ const d=data[cat];
+ return `<article class="product">
+ <span class="new">DISPONÍVEL</span>
+ <div class="photo">${d.emoji}</div>
+ <div class="product-info">
+ <h3>${d.names[i]}</h3>
+ <div class="price">${money(d.price)}</div>
+ <div class="sizes">Tamanhos: ${d.sizes}</div>
+ <button class="add" onclick="add('${cat}',${i})">ADICIONAR AO CARRINHO</button>
+ </div></article>`;
+}
+
+function makePages(){
+ let html="";
+ for(const cat in data){
+   const d=data[cat];
+   html+=`<section class="category-page" id="page-${cat}">
+   <button class="back" onclick="showHome()">← Voltar para a loja</button>
+   <h2 class="title">${d.title}</h2>
+   <div class="products">${d.names.map((n,i)=>card(cat,i)).join("")}</div>
+   </section>`;
+ }
+ document.getElementById("pages").innerHTML=html;
+}
+
+function makeHighlights(){
+ let out="";
+ for(const cat of Object.keys(data)) out+=card(cat,0);
+ document.getElementById("highlights").innerHTML=out;
+}
+
+function showHome(){
+ document.getElementById("home").style.display="block";
+ document.querySelectorAll(".category-page").forEach(p=>p.classList.remove("active"));
+ window.scrollTo(0,0);
+}
+
+function showCategory(cat){
+ document.getElementById("home").style.display="none";
+ document.querySelectorAll(".category-page").forEach(p=>p.classList.remove("active"));
+ const p=document.getElementById("page-"+cat);
+ if(p)p.classList.add("active");
+ window.scrollTo(0,0);
+}
+
+function add(cat,i){
+ const d=data[cat],id=cat+"_"+i;
+ const found=cart.find(x=>x.id===id);
+ if(found)found.qty++;
+ else cart.push({id:id,name:d.names[i],price:d.price,qty:1});
+ save();
+ openCart();
+}
+
+function save(){
+ localStorage.setItem("lp_cart",JSON.stringify(cart));
+ renderCart();
+}
+
+function renderCart(){
+ document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
+ const list=document.getElementById("cartList");
+ if(!cart.length){
+   list.innerHTML='<p style="text-align:center;color:#777;margin-top:30px">Seu carrinho está vazio.</p>';
+   document.getElementById("cartTotal").textContent="Total: R$ 0,00";
+   return;
+ }
+ list.innerHTML=cart.map(x=>`
+ <div class="cart-item">
+  <div class="cart-row"><b>${x.name}</b><b>${money(x.price*x.qty)}</b></div>
+  <div style="color:#666;font-size:12px;margin-top:4px">${money(x.price)} cada</div>
+  <div class="qty">
+   <button onclick="qty('${x.id}',-1)">−</button><span>${x.qty}</span><button onclick="qty('${x.id}',1)">+</button>
+  </div>
+  <button class="remove" onclick="removeItem('${x.id}')">REMOVER</button>
+ </div>`).join("");
+ const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
+ document.getElementById("cartTotal").textContent="Total: "+money(total);
+}
+
+function qty(id,n){
+ const x=cart.find(i=>i.id===id);if(!x)return;
+ x.qty+=n;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);
+ save();
+}
+
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save()}
+
+function openCart(){
+ renderCart();
+ document.getElementById("cart").classList.add("open");
+ document.getElementById("cartOverlay").classList.add("open");
+}
+
+function closeCart(){
+ document.getElementById("cart").classList.remove("open");
+ document.getElementById("cartOverlay").classList.remove("open");
+}
+
+function checkout(){
+ if(!cart.length){alert("Seu carrinho está vazio.");return}
+ const items=cart.map(x=>`• ${x.name} — ${x.qty}x — ${money(x.price*x.qty)}`).join("\n");
+ const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
+ const text=`Olá Lifestyle Perez! Quero fazer um pedido:\n\n${items}\n\nTotal: ${money(total)}\nPagamento: Pix ou dinheiro.`;
+ window.open("https://wa.me/5544997406250?text="+encodeURIComponent(text),"_blank");
+}
+
+makePages();
+makeHighlights();
+renderCart();
+</script>
+</body>
+</html>
