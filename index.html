@@ -6,81 +6,189 @@
     <title>Lifestyle Perez</title>
     <style>
         :root {
-            --primary-cyan: #e0f7fa;
-            --accent-cyan: #00acc1;
-            --dark-cyan: #006064;
-            --white: #ffffff;
-            --gray-bg: #f4f6f6;
-            --text-dark: #333333;
+            --primary-color: #00bcd4; /* Ciano claro */
+            --secondary-color: #ffffff; /* Branco */
+            --dark-color: #333333;
+            --light-bg: #f4f6f8;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background-color: var(--white);
-            color: var(--text-dark);
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-cyan), var(--white));
-            padding: 25px 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 20px;
             text-align: center;
-            border-bottom: 3px solid var(--accent-cyan);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .logo-container h1 {
-            font-size: 2.5rem;
-            color: var(--dark-cyan);
-            margin-bottom: 5px;
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
             letter-spacing: 1px;
         }
 
-        .slogan {
-            font-size: 1.1rem;
-            color: var(--dark-cyan);
-            font-style: italic;
-            font-weight: 500;
-        }
-
         nav {
-            background-color: var(--primary-cyan);
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            padding: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: #0097a7;
+            padding: 10px;
         }
 
-        .tab-btn {
-            background-color: var(--white);
-            border: 2px solid var(--accent-cyan);
-            color: var(--dark-cyan);
+        nav button {
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
             padding: 8px 16px;
-            border-radius: 20px;
             cursor: pointer;
+            border-radius: 4px;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
         }
 
-        .tab-btn:hover, .tab-btn.active {
-            background-color: var(--accent-cyan);
-            color: var(--white);
+        nav button:hover, nav button.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
-        main {
+        .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
-            min-height: 500px;
+            display: flex;
+            gap: 20px;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        .cart-sidebar {
+            flex: 1;
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            height: fit-content;
+        }
+
+        .cart-sidebar h2 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+
+        .cart-items {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #00838f;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--secondary-color);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background-color: #eee;
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .product-card .price {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .product-options {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        .product-options select {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-buy {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-buy:hover {
+            background-color: #0097a7;
         }
 
         .tab-content {
@@ -91,375 +199,201 @@
             display: block;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--dark-cyan);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-cyan);
-            padding-bottom: 10px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border: 1px solid #b2ebf2;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,172,193,0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            background-color: var(--gray-bg);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            color: var(--dark-cyan);
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .buy-btn {
-            background-color: var(--accent-cyan);
-            color: var(--white);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .buy-btn:hover {
-            background-color: var(--dark-cyan);
-        }
-
-        /* Carrinho de Compras Flutuante */
-        .cart-container {
-            background-color: var(--primary-cyan);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        .cart-container h2 {
-            color: var(--dark-cyan);
-            margin-bottom: 15px;
-        }
-
-        .cart-items {
-            list-style: none;
-            margin-bottom: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dashed #b2ebf2;
-        }
-
-        .cart-total {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--dark-cyan);
-            margin-bottom: 15px;
-        }
-
-        .checkout-btn {
-            background-color: #25d366;
-            color: var(--white);
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-        }
-
-        .checkout-btn:hover {
-            background-color: #128c7e;
-        }
-
-        footer {
-            background-color: var(--dark-cyan);
-            color: var(--white);
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        .social-links {
-            margin-bottom: 15px;
-        }
-
-        .social-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-cyan);
-        }
-
-        .payment-methods {
-            font-size: 0.95rem;
-            opacity: 0.9;
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <h1>Lifestyle Perez</h1>
-            <p class="slogan">“Vista o corre, viva o propósito”</p>
-        </div>
+        <h1>Lifestyle Perez</h1>
+        <p>Sua loja de estilo e camisas esportivas</p>
     </header>
 
     <nav>
-        <button class="tab-btn active" onclick="openTab(event, 'bones')">Bonés</button>
-        <button class="tab-btn" onclick="openTab(event, 'camisas')">Camisas de Time</button>
-        <button class="tab-btn" onclick="openTab(event, 'polos')">Polos</button>
-        <button class="tab-btn" onclick="openTab(event, 'shorts')">Shorts</button>
-        <button class="tab-btn" onclick="openTab(event, 'moletons')">Moletons</button>
-        <button class="tab-btn" onclick="openTab(event, 'calcas')">Calças</button>
+        <button onclick="switchTab('bones')" class="tab-btn">Bonés</button>
+        <button onclick="switchTab('camisas-time')" class="tab-btn active">Camisas de Time</button>
+        <button onclick="switchTab('polos')" class="tab-btn">Polos</button>
+        <button onclick="switchTab('shorts')" class="tab-btn">Shorts</button>
+        <button onclick="switchTab('moletons')" class="tab-btn">Moletons</button>
+        <button onclick="switchTab('calcas')" class="tab-btn">Calças</button>
     </nav>
 
-    <main>
-        <!-- ABA: BONÉS -->
-        <div id="bones" class="tab-content active">
-            <h2 class="section-title">Bonés</h2>
-            <div class="products-grid">
-                <!-- EXEMPLO DE PRODUTO 1 (Substitua a URL da imagem e o nome/preço quando quiser) -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <!-- Espaço para inserir imagem: cole o link da foto no src="..." -->
-                        <img src="URL_DA_FOTO_AQUI" alt="Boné 1" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
-                    </div>
-                    <div class="product-name">Boné Lifestyle Perez</div>
-                    <div class="product-price">R$ 59,90</div>
-                    <button class="buy-btn" onclick="addToCart('Boné Lifestyle Perez', 59.90)">Adicionar ao Carrinho</button>
+    <div class="container">
+        <!-- Main Content Area -->
+        <main>
+            <!-- Bonés -->
+            <div id="bones" class="tab-content">
+                <h2 class="section-title">Bonés</h2>
+                <div class="products-grid">
+                    <!-- Adicione produtos de bonés aqui -->
+                    <p>Nenhum boné cadastrado no momento.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- ABA: CAMISAS DE TIME -->
-        <div id="camisas" class="tab-content">
-            <h2 class="section-title">Camisas de Time</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="URL_DA_FOTO_AQUI" alt="Camisa de Time" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
+            <!-- Camisas de Time -->
+            <div id="camisas-time" class="tab-content active">
+                <h2 class="section-title">Camisas de Time</h2>
+                <div class="products-grid">
+                    
+                    <!-- Produto 1 -->
+                    <div class="product-card" data-name="Camisa Santos Charlie Brown Jr" data-price="79.90">
+                        <img src="image.png" alt="Camisa Santos Charlie Brown Jr">
+                        <div>
+                            <h3>Camisa Santos Charlie Brown Jr</h3>
+                            <div class="price">R$ 79,90</div>
+                            <div class="product-options">
+                                <label>Tamanho:
+                                    <select class="size-select">
+                                        <option value="P">P</option>
+                                        <option value="M">M</option>
+                                        <option value="G">G</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
                     </div>
-                    <div class="product-name">Camisa de Time Exemplo</div>
-                    <div class="product-price">R$ 119,90</div>
-                    <button class="buy-btn" onclick="addToCart('Camisa de Time Exemplo', 119.90)">Adicionar ao Carrinho</button>
+
+                    <!-- Produto 2 -->
+                    <div class="product-card" data-name="Camisa Palmeiras Gola Polo" data-price="79.90">
+                        <img src="image_2.png" alt="Camisa Palmeiras Gola Polo">
+                        <div>
+                            <h3>Camisa Palmeiras Gola Polo</h3>
+                            <div class="price">R$ 79,90</div>
+                            <div class="product-options">
+                                <label>Tamanho:
+                                    <select class="size-select">
+                                        <option value="GG">GG</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="product-card" data-name="Camisa Manchester United" data-price="79.90">
+                        <img src="image_3.png" alt="Camisa Manchester United">
+                        <div>
+                            <h3>Camisa Manchester United</h3>
+                            <div class="price">R$ 79,90</div>
+                            <div class="product-options">
+                                <label>Tamanho:
+                                    <select class="size-select">
+                                        <option value="GG">GG</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <!-- ABA: POLOS -->
-        <div id="polos" class="tab-content">
-            <h2 class="section-title">Polos</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="URL_DA_FOTO_AQUI" alt="Camisa Polo" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
-                    </div>
-                    <div class="product-name">Camisa Polo Exemplo</div>
-                    <div class="product-price">R$ 79,90</div>
-                    <button class="buy-btn" onclick="addToCart('Camisa Polo Exemplo', 79.90)">Adicionar ao Carrinho</button>
+            <!-- Polos -->
+            <div id="polos" class="tab-content">
+                <h2 class="section-title">Polos</h2>
+                <div class="products-grid">
+                    <p>Nenhuma camisa polo cadastrada no momento.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- ABA: SHORTS -->
-        <div id="shorts" class="tab-content">
-            <h2 class="section-title">Shorts</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="URL_DA_FOTO_AQUI" alt="Shorts" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
-                    </div>
-                    <div class="product-name">Shorts Exemplo</div>
-                    <div class="product-price">R$ 69,90</div>
-                    <button class="buy-btn" onclick="addToCart('Shorts Exemplo', 69.90)">Adicionar ao Carrinho</button>
+            <!-- Shorts -->
+            <div id="shorts" class="tab-content">
+                <h2 class="section-title">Shorts</h2>
+                <div class="products-grid">
+                    <p>Nenhum short cadastrado no momento.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- ABA: MOLETONS -->
-        <div id="moletons" class="tab-content">
-            <h2 class="section-title">Moletons</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="URL_DA_FOTO_AQUI" alt="Moletom" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
-                    </div>
-                    <div class="product-name">Moletom Exemplo</div>
-                    <div class="product-price">R$ 149,90</div>
-                    <button class="buy-btn" onclick="addToCart('Moletom Exemplo', 149.90)">Adicionar ao Carrinho</button>
+            <!-- Moletons -->
+            <div id="moletons" class="tab-content">
+                <h2 class="section-title">Moletons</h2>
+                <div class="products-grid">
+                    <p>Nenhum moletom cadastrado no momento.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- ABA: CALÇAS -->
-        <div id="calcas" class="tab-content">
-            <h2 class="section-title">Calças</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="URL_DA_FOTO_AQUI" alt="Calça" onerror="this.style.display='none'">
-                        <span style="position: absolute;">Sem foto</span>
-                    </div>
-                    <div class="product-name">Calça Exemplo</div>
-                    <div class="product-price">R$ 129,90</div>
-                    <button class="buy-btn" onclick="addToCart('Calça Exemplo', 129.90)">Adicionar ao Carrinho</button>
+            <!-- Calças -->
+            <div id="calcas" class="tab-content">
+                <h2 class="section-title">Calças</h2>
+                <div class="products-grid">
+                    <p>Nenhuma calça cadastrada no momento.</p>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <!-- SEÇÃO DO CARRINHO -->
-        <div class="cart-container">
-            <h2>Carrinho de Compras</h2>
+        <!-- Carrinho de Compras -->
+        <aside class="cart-sidebar">
+            <h2>Carrinho</h2>
             <ul id="cart-items" class="cart-items">
-                <li style="color: #666;">Seu carrinho está vazio.</li>
+                <!-- Itens adicionados aparecerão aqui -->
+                <li style="color: #777; text-align: center; font-size: 0.9rem;">Carrinho vazio</li>
             </ul>
-            <div class="cart-total">Total: R$ <span id="cart-total-price">0.00</span></div>
-            <button class="checkout-btn" onclick="checkoutWhatsApp()">Finalizar Compra no WhatsApp</button>
-        </div>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://instagram.com/lifestyle.perez" target="_blank">Instagram: @lifestyle.perez</a>
-            <a href="https://tiktok.com/@lifestyle.perez" target="_blank">TikTok: @lifestyle.perez</a>
-        </div>
-        <p class="payment-methods">Formas de pagamento aceitas: <strong>Pix</strong> e <strong>Dinheiro</strong></p>
-        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">© Lifestyle Perez - Todos os direitos reservados.</p>
-    </footer>
+            <div class="cart-total">
+                Total: R$ <span id="cart-total-price">0,00</span>
+            </div>
+        </aside>
+    </div>
 
     <script>
-        // Função para alternar entre as abas das categorias
-        function openTab(evt, tabName) {
-            const contents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
-            }
-
-            const buttons = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        // Lógica do Carrinho de Compras
         let cart = [];
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
+        function switchTab(tabId) {
+            // Esconde todas as abas
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove a classe active de todos os botões
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostra a aba selecionada e ativa o botão correspondente
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function addToCart(button) {
+            const card = button.closest('.product-card');
+            const name = card.getAttribute('data-name');
+            const price = parseFloat(card.getAttribute('data-price'));
+            const sizeSelect = card.querySelector('.size-select');
+            const size = sizeSelect ? sizeSelect.value : 'Único';
+
+            cart.push({ name, price, size });
             updateCartUI();
         }
 
         function updateCartUI() {
-            const cartItemsList = document.getElementById("cart-items");
-            const cartTotalPrice = document.getElementById("cart-total-price");
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalPrice = document.getElementById('cart-total-price');
 
-            cartItemsList.innerHTML = "";
+            cartItemsList.innerHTML = '';
 
             if (cart.length === 0) {
-                cartItemsList.innerHTML = '<li style="color: #666;">Seu carrinho está vazio.</li>';
-                cartTotalPrice.innerText = "0.00";
+                cartItemsList.innerHTML = '<li style="color: #777; text-align: center; font-size: 0.9rem;">Carrinho vazio</li>';
+                cartTotalPrice.textContent = '0,00';
                 return;
             }
 
             let total = 0;
             cart.forEach((item, index) => {
                 total += item.price;
-                const li = document.createElement("li");
-                li.className = "cart-item";
-                li.innerHTML = `<span>${item.name}</span> <span>R$ ${item.price.toFixed(2)}</span>`;
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    <span>${item.name} (Tam: ${item.size})</span>
+                    <span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                `;
                 cartItemsList.appendChild(li);
             });
 
-            cartTotalPrice.innerText = total.toFixed(2);
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Seu carrinho está vazio! Adicione produtos antes de finalizar.");
-                return;
-            }
-
-            let message = "Olá! Gostaria de finalizar a seguinte compra na *Lifestyle Perez*:\n\n*Produtos:*\n";
-            let total = 0;
-
-            cart.forEach(item => {
-                message += `- ${item.name}: R$ ${item.price.toFixed(2)}\n`;
-                total += item.price;
-            });
-
-            message += `\n*Total:* R$ ${total.toFixed(2)}`;
-            message += `\n*Formas de pagamento:* Pix ou Dinheiro`;
-            message += `\n\n*Vista o corre, viva o propósito!*`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const phoneNumber = "5544997406250"; // Número formatado com DDI 55 e DDD 44
-            
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            cartTotalPrice.textContent = total.toFixed(2).replace('.', ',');
         }
     </script>
 </body>
