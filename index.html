@@ -1,1198 +1,466 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Lifestyle Perez</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #111111;
-}
-
-/* TOPO */
-
-.top-bar {
-    background: #00aaff;
-    color: white;
-    text-align: center;
-    padding: 9px 10px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-/* HEADER */
-
-header {
-    background: white;
-    border-bottom: 1px solid #eeeeee;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-content {
-    max-width: 1200px;
-    min-height: 72px;
-    margin: auto;
-    padding: 0 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    color: #111111;
-    text-decoration: none;
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: #00aaff;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-}
-
-nav a {
-    color: #222222;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #00aaff;
-}
-
-.cart-button {
-    border: none;
-    background: #00aaff;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 430px;
-    padding: 60px 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,170,255,0.14),
-            transparent 55%
-        ),
-        #ffffff;
-}
-
-.hero-content {
-    max-width: 850px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 8vw, 80px);
-    font-weight: 900;
-    letter-spacing: 4px;
-}
-
-.hero h1 span {
-    color: #00aaff;
-}
-
-.hero p {
-    color: #666666;
-    margin: 18px 0 28px;
-    font-size: 17px;
-}
-
-.hero-button {
-    display: inline-block;
-    background: #00aaff;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-/* SEÇÕES */
-
-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 55px 20px;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.section-title h2 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-.section-title p {
-    color: #777777;
-}
-
-/* CATEGORIAS */
-
-.categories {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 35px;
-}
-
-.category {
-    background: white;
-    border: 1px solid #dddddd;
-    color: #222222;
-
-    padding: 10px 18px;
-
-    border-radius: 30px;
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.category:hover,
-.category.active {
-    background: #00aaff;
-    border-color: #00aaff;
-    color: white;
-}
-
-/* PRODUTOS */
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.product {
-    background: white;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    overflow: hidden;
-
-    transition: 0.2s;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-}
-
-.product:hover {
-    transform: translateY(-5px);
-    border-color: #00aaff;
-}
-
-.product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-    background: #f5f5f5;
-}
-
-.product-info {
-    padding: 17px;
-}
-
-.product-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.product-price {
-    color: #00aaff;
-    font-size: 21px;
-    font-weight: 900;
-    margin-bottom: 15px;
-}
-
-.add-button {
-    width: 100%;
-    padding: 11px;
-
-    border: none;
-    border-radius: 7px;
-
-    background: #00aaff;
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.add-button:hover {
-    background: #008fd5;
-}
-
-/* SOBRE */
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.info-card {
-    background: white;
-    border: 1px solid #e5e5e5;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
-    text-align: center;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.info-card h3 {
-    margin-bottom: 10px;
-}
-
-.info-card p {
-    color: #666666;
-    line-height: 1.5;
-}
-
-/* FOOTER */
-
-footer {
-    border-top: 1px solid #eeeeee;
-
-    padding: 35px 20px;
-
-    text-align: center;
-    color: #777777;
-}
-
-footer strong {
-    color: #111111;
-}
-
-footer p {
-    margin-top: 8px;
-}
-
-/* CARRINHO */
-
-.cart-overlay {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0,0,0,0.45);
-
-    z-index: 1999;
-
-    display: none;
-}
-
-.cart-overlay.active {
-    display: block;
-}
-
-.cart {
-    position: fixed;
-
-    top: 0;
-    right: -430px;
-
-    width: min(430px, 100%);
-    height: 100vh;
-
-    background: white;
-
-    z-index: 2000;
-
-    border-left: 1px solid #dddddd;
-
-    transition: right 0.3s ease;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.cart.active {
-    right: 0;
-}
-
-.cart-header {
-    padding: 20px;
-
-    border-bottom: 1px solid #eeeeee;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.close-cart {
-    background: none;
-    border: none;
-
-    color: #111111;
-
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-
-    padding: 15px;
-}
-
-.empty-cart {
-    text-align: center;
-
-    color: #888888;
-
-    margin-top: 50px;
-}
-
-.cart-item {
-    display: flex;
-
-    gap: 12px;
-
-    padding: 12px 0;
-
-    border-bottom: 1px solid #eeeeee;
-}
-
-.cart-item img {
-    width: 70px;
-    height: 70px;
-
-    object-fit: cover;
-
-    border-radius: 7px;
-}
-
-.cart-item-info {
-    flex: 1;
-}
-
-.cart-item-name {
-    font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 5px;
-}
-
-.cart-item-price {
-    color: #00aaff;
-    font-weight: bold;
-}
-
-.quantity {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: 8px;
-}
-
-.quantity button {
-    width: 26px;
-    height: 26px;
-
-    border: 1px solid #dddddd;
-
-    background: white;
-
-    color: #111111;
-
-    cursor: pointer;
-
-    border-radius: 4px;
-}
-
-.remove-item {
-    border: none !important;
-    background: none !important;
-    color: #888888 !important;
-    width: auto !important;
-}
-
-.cart-footer {
-    padding: 20px;
-
-    border-top: 1px solid #eeeeee;
-}
-
-.total {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 15px;
-
-    font-size: 19px;
-
-    font-weight: bold;
-}
-
-.checkout {
-    width: 100%;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #00aaff;
-
-    color: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-/* WHATSAPP */
-
-.whatsapp {
-    position: fixed;
-
-    right: 20px;
-    bottom: 20px;
-
-    z-index: 1500;
-
-    width: 55px;
-    height: 55px;
-
-    border-radius: 50%;
-
-    background: #25d366;
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-
-/* RESPONSIVO */
-
-@media (max-width: 1000px) {
-    .products {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-
-    .header-content {
-        min-height: 65px;
-    }
-
-    nav {
-        display: none;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero {
-        min-height: 360px;
-    }
-
-    section {
-        padding: 40px 15px;
-    }
-
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .product-info {
-        padding: 12px;
-    }
-
-    .product-name {
-        font-size: 14px;
-    }
-
-    .product-price {
-        font-size: 18px;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 400px) {
-
-    .products {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .product-name {
-        font-size: 13px;
-    }
-
-    .product-price {
-        font-size: 17px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Perez</title>
+    <style>
+        :root {
+            --primary-cyan: #e0f7fa;
+            --accent-cyan: #00acc1;
+            --dark-cyan: #006064;
+            --white: #ffffff;
+            --gray-bg: #f4f6f6;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--white));
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-cyan);
+        }
+
+        .logo-container h1 {
+            font-size: 2.5rem;
+            color: var(--dark-cyan);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            color: var(--dark-cyan);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        nav {
+            background-color: var(--primary-cyan);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            background-color: var(--white);
+            border: 2px solid var(--accent-cyan);
+            color: var(--dark-cyan);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--accent-cyan);
+            color: var(--white);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            min-height: 500px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark-cyan);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-cyan);
+            padding-bottom: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #b2ebf2;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,172,193,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: var(--gray-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--dark-cyan);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .buy-btn {
+            background-color: var(--accent-cyan);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--dark-cyan);
+        }
+
+        /* Carrinho de Compras Flutuante */
+        .cart-container {
+            background-color: var(--primary-cyan);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .cart-container h2 {
+            color: var(--dark-cyan);
+            margin-bottom: 15px;
+        }
+
+        .cart-items {
+            list-style: none;
+            margin-bottom: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #b2ebf2;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark-cyan);
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            background-color: #25d366;
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #128c7e;
+        }
+
+        footer {
+            background-color: var(--dark-cyan);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-cyan);
+        }
+
+        .payment-methods {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="top-bar">
-    FRETE GRÁTIS PARA PALOTINA - PR 🇧🇷 | ENVIO PARA TODO O BRASIL | PIX OU DINHEIRO
-</div>
+    <header>
+        <div class="logo-container">
+            <h1>Lifestyle Perez</h1>
+            <p class="slogan">“Vista o corre, viva o propósito”</p>
+        </div>
+    </header>
 
-<header>
+    <nav>
+        <button class="tab-btn active" onclick="openTab(event, 'bones')">Bonés</button>
+        <button class="tab-btn" onclick="openTab(event, 'camisas')">Camisas de Time</button>
+        <button class="tab-btn" onclick="openTab(event, 'polos')">Polos</button>
+        <button class="tab-btn" onclick="openTab(event, 'shorts')">Shorts</button>
+        <button class="tab-btn" onclick="openTab(event, 'moletons')">Moletons</button>
+        <button class="tab-btn" onclick="openTab(event, 'calcas')">Calças</button>
+    </nav>
 
-    <div class="header-content">
-
-        <a href="#inicio" class="logo">
-            LIFESTYLE <span>PEREZ</span>
-        </a>
-
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#produtos">Produtos</a>
-            <a href="#sobre">Sobre</a>
-        </nav>
-
-        <button class="cart-button" onclick="openCart()">
-            🛒 Carrinho
-            <span id="cart-count">0</span>
-        </button>
-
-    </div>
-
-</header>
-
-<main>
-
-<section class="hero" id="inicio">
-
-    <div class="hero-content">
-
-        <h1>
-            LIFESTYLE <span>PEREZ</span>
-        </h1>
-
-        <p>
-            Estilo com alma de rua.
-        </p>
-
-        <a href="#produtos" class="hero-button">
-            VER PRODUTOS
-        </a>
-
-    </div>
-
-</section>
-
-
-<section id="produtos">
-
-    <div class="section-title">
-
-        <h2>PRODUTOS</h2>
-
-        <p>
-            Confira nossa coleção.
-        </p>
-
-    </div>
-
-
-    <div class="categories">
-
-        <button
-            class="category active"
-            onclick="filterProducts('todos', this)">
-            Todos
-        </button>
-
-        <button
-            class="category"
-            onclick="filterProducts('camisetas', this)">
-            Camisetas
-        </button>
-
-        <button
-            class="category"
-            onclick="filterProducts('bones', this)">
-            Bonés
-        </button>
-
-        <button
-            class="category"
-            onclick="filterProducts('acessorios', this)">
-            Acessórios
-        </button>
-
-    </div>
-
-
-    <div class="products" id="product-list">
-
-        <!-- BONÉ 1 -->
-
-        <article class="product" data-category="bones">
-
-            <img
-                class="product-image"
-                src="https://raw.githubusercontent.com/LifestylePerez/LifestylePerez.github.io/main/bon%C3%A9%201.png"
-                alt="Cap Cyclone Cotelê Preto Vermelho"
-            >
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    Cap Cyclone Cotelê Preto / Vermelho
+    <main>
+        <!-- ABA: BONÉS -->
+        <div id="bones" class="tab-content active">
+            <h2 class="section-title">Bonés</h2>
+            <div class="products-grid">
+                <!-- EXEMPLO DE PRODUTO 1 (Substitua a URL da imagem e o nome/preço quando quiser) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <!-- Espaço para inserir imagem: cole o link da foto no src="..." -->
+                        <img src="URL_DA_FOTO_AQUI" alt="Boné 1" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Boné Lifestyle Perez</div>
+                    <div class="product-price">R$ 59,90</div>
+                    <button class="buy-btn" onclick="addToCart('Boné Lifestyle Perez', 59.90)">Adicionar ao Carrinho</button>
                 </div>
-
-                <div class="product-price">
-                    R$ 69,90
-                </div>
-
-                <button
-                    class="add-button"
-                    onclick="addToCart(
-                        'Cap Cyclone Cotelê Preto / Vermelho',
-                        69.90,
-                        'https://raw.githubusercontent.com/LifestylePerez/LifestylePerez.github.io/main/bon%C3%A9%201.png'
-                    )">
-
-                    ADICIONAR AO CARRINHO
-
-                </button>
-
             </div>
+        </div>
 
-        </article>
-
-
-        <!-- BONÉ 2 -->
-
-        <article class="product" data-category="bones">
-
-            <img
-                class="product-image"
-                src="https://raw.githubusercontent.com/LifestylePerez/LifestylePerez.github.io/main/bon%C3%A9%202.png"
-                alt="Cap Cyclone"
-            >
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    Cap Cyclone
+        <!-- ABA: CAMISAS DE TIME -->
+        <div id="camisas" class="tab-content">
+            <h2 class="section-title">Camisas de Time</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="URL_DA_FOTO_AQUI" alt="Camisa de Time" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Camisa de Time Exemplo</div>
+                    <div class="product-price">R$ 119,90</div>
+                    <button class="buy-btn" onclick="addToCart('Camisa de Time Exemplo', 119.90)">Adicionar ao Carrinho</button>
                 </div>
-
-                <div class="product-price">
-                    R$ 69,90
-                </div>
-
-                <button
-                    class="add-button"
-                    onclick="addToCart(
-                        'Cap Cyclone',
-                        69.90,
-                        'https://raw.githubusercontent.com/LifestylePerez/LifestylePerez.github.io/main/bon%C3%A9%202.png'
-                    )">
-
-                    ADICIONAR AO CARRINHO
-
-                </button>
-
             </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<section id="sobre">
-
-    <div class="section-title">
-
-        <h2>LIFESTYLE PEREZ</h2>
-
-        <p>
-            Mais que roupa. Um estilo.
-        </p>
-
-    </div>
-
-
-    <div class="info-grid">
-
-        <div class="info-card">
-
-            <h3>🚚 Envio</h3>
-
-            <p>
-                Enviamos seus pedidos com segurança para todo o Brasil.
-            </p>
-
         </div>
 
-
-        <div class="info-card">
-
-            <h3>💳 Pagamento</h3>
-
-            <p>
-                Combine o pagamento diretamente com a Lifestyle Perez pelo atendimento.
-            </p>
-
+        <!-- ABA: POLOS -->
+        <div id="polos" class="tab-content">
+            <h2 class="section-title">Polos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="URL_DA_FOTO_AQUI" alt="Camisa Polo" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Camisa Polo Exemplo</div>
+                    <div class="product-price">R$ 79,90</div>
+                    <button class="buy-btn" onclick="addToCart('Camisa Polo Exemplo', 79.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
 
-
-        <div class="info-card">
-
-            <h3>🔥 Estilo</h3>
-
-            <p>
-                Peças selecionadas para quem busca personalidade e atitude.
-            </p>
-
+        <!-- ABA: SHORTS -->
+        <div id="shorts" class="tab-content">
+            <h2 class="section-title">Shorts</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="URL_DA_FOTO_AQUI" alt="Shorts" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Shorts Exemplo</div>
+                    <div class="product-price">R$ 69,90</div>
+                    <button class="buy-btn" onclick="addToCart('Shorts Exemplo', 69.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
 
-    </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-    <strong>
-        LIFESTYLE PEREZ
-    </strong>
-
-    <p>
-        © 2026 Lifestyle Perez. Todos os direitos reservados.
-    </p>
-
-</footer>
-
-
-<!-- CARRINHO -->
-
-<div
-    class="cart-overlay"
-    id="cart-overlay"
-    onclick="closeCart()">
-</div>
-
-
-<aside class="cart" id="cart">
-
-    <div class="cart-header">
-
-        <h2>
-            Seu carrinho
-        </h2>
-
-        <button
-            class="close-cart"
-            onclick="closeCart()">
-            ×
-        </button>
-
-    </div>
-
-
-    <div
-        class="cart-items"
-        id="cart-items">
-
-        <div class="empty-cart">
-            Seu carrinho está vazio.
+        <!-- ABA: MOLETONS -->
+        <div id="moletons" class="tab-content">
+            <h2 class="section-title">Moletons</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="URL_DA_FOTO_AQUI" alt="Moletom" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Moletom Exemplo</div>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="buy-btn" onclick="addToCart('Moletom Exemplo', 149.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
 
-    </div>
-
-
-    <div class="cart-footer">
-
-        <div class="total">
-
-            <span>
-                Total
-            </span>
-
-            <span id="cart-total">
-                R$ 0,00
-            </span>
-
+        <!-- ABA: CALÇAS -->
+        <div id="calcas" class="tab-content">
+            <h2 class="section-title">Calças</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="URL_DA_FOTO_AQUI" alt="Calça" onerror="this.style.display='none'">
+                        <span style="position: absolute;">Sem foto</span>
+                    </div>
+                    <div class="product-name">Calça Exemplo</div>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="buy-btn" onclick="addToCart('Calça Exemplo', 129.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
 
+        <!-- SEÇÃO DO CARRINHO -->
+        <div class="cart-container">
+            <h2>Carrinho de Compras</h2>
+            <ul id="cart-items" class="cart-items">
+                <li style="color: #666;">Seu carrinho está vazio.</li>
+            </ul>
+            <div class="cart-total">Total: R$ <span id="cart-total-price">0.00</span></div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">Finalizar Compra no WhatsApp</button>
+        </div>
+    </main>
 
-        <button
-            class="checkout"
-            onclick="checkout()">
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/lifestyle.perez" target="_blank">Instagram: @lifestyle.perez</a>
+            <a href="https://tiktok.com/@lifestyle.perez" target="_blank">TikTok: @lifestyle.perez</a>
+        </div>
+        <p class="payment-methods">Formas de pagamento aceitas: <strong>Pix</strong> e <strong>Dinheiro</strong></p>
+        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">© Lifestyle Perez - Todos os direitos reservados.</p>
+    </footer>
 
-            FINALIZAR PEDIDO
-
-        </button>
-
-    </div>
-
-</aside>
-
-
-<!-- WHATSAPP -->
-
-<a
-    class="whatsapp"
-    href="https://wa.me/SEUNUMERO"
-    target="_blank"
-    aria-label="WhatsApp">
-
-    WA
-
-</a>
-
-
-<script>
-
-let cart = [];
-
-
-/* FILTRO */
-
-function filterProducts(category, button) {
-
-    document
-        .querySelectorAll(".category")
-        .forEach(btn => btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    document
-        .querySelectorAll(".product")
-        .forEach(product => {
-
-            if (
-                category === "todos" ||
-                product.dataset.category === category
-            ) {
-
-                product.style.display = "block";
-
-            } else {
-
-                product.style.display = "none";
-
+    <script>
+        // Função para alternar entre as abas das categorias
+        function openTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
             }
 
-        });
-}
+            const buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
 
-
-/* ABRIR CARRINHO */
-
-function openCart() {
-
-    document
-        .getElementById("cart")
-        .classList
-        .add("active");
-
-    document
-        .getElementById("cart-overlay")
-        .classList
-        .add("active");
-}
-
-
-/* FECHAR CARRINHO */
-
-function closeCart() {
-
-    document
-        .getElementById("cart")
-        .classList
-        .remove("active");
-
-    document
-        .getElementById("cart-overlay")
-        .classList
-        .remove("active");
-}
-
-
-/* ADICIONAR */
-
-function addToCart(name, price, image) {
-
-    const existingProduct =
-        cart.find(item => item.name === name);
-
-    if (existingProduct) {
-
-        existingProduct.quantity++;
-
-    } else {
-
-        cart.push({
-
-            name: name,
-            price: price,
-            image: image,
-            quantity: 1
-
-        });
-
-    }
-
-    updateCart();
-
-    openCart();
-}
-
-
-/* QUANTIDADE */
-
-function changeQuantity(index, amount) {
-
-    cart[index].quantity += amount;
-
-    if (cart[index].quantity <= 0) {
-
-        cart.splice(index, 1);
-
-    }
-
-    updateCart();
-}
-
-
-/* REMOVER */
-
-function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    updateCart();
-}
-
-
-/* PREÇO */
-
-function formatPrice(value) {
-
-    return value.toLocaleString(
-        "pt-BR",
-        {
-            style: "currency",
-            currency: "BRL"
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
-    );
 
-}
+        // Lógica do Carrinho de Compras
+        let cart = [];
 
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+        }
 
-/* ATUALIZAR */
+        function updateCartUI() {
+            const cartItemsList = document.getElementById("cart-items");
+            const cartTotalPrice = document.getElementById("cart-total-price");
 
-function updateCart() {
+            cartItemsList.innerHTML = "";
 
-    const cartItems =
-        document.getElementById("cart-items");
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<li style="color: #666;">Seu carrinho está vazio.</li>';
+                cartTotalPrice.innerText = "0.00";
+                return;
+            }
 
-    const cartCount =
-        document.getElementById("cart-count");
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const li = document.createElement("li");
+                li.className = "cart-item";
+                li.innerHTML = `<span>${item.name}</span> <span>R$ ${item.price.toFixed(2)}</span>`;
+                cartItemsList.appendChild(li);
+            });
 
-    const cartTotal =
-        document.getElementById("cart-total");
+            cartTotalPrice.innerText = total.toFixed(2);
+        }
 
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio! Adicione produtos antes de finalizar.");
+                return;
+            }
 
-    if (cart.length === 0) {
+            let message = "Olá! Gostaria de finalizar a seguinte compra na *Lifestyle Perez*:\n\n*Produtos:*\n";
+            let total = 0;
 
-        cartItems.innerHTML =
-            '<div class="empty-cart">Seu carrinho está vazio.</div>';
+            cart.forEach(item => {
+                message += `- ${item.name}: R$ ${item.price.toFixed(2)}\n`;
+                total += item.price;
+            });
 
-    } else {
+            message += `\n*Total:* R$ ${total.toFixed(2)}`;
+            message += `\n*Formas de pagamento:* Pix ou Dinheiro`;
+            message += `\n\n*Vista o corre, viva o propósito!*`;
 
-        cartItems.innerHTML = cart.map(
-            (item, index) => `
-
-                <div class="cart-item">
-
-                    <img
-                        src="${item.image}"
-                        alt="${item.name}"
-                    >
-
-                    <div class="cart-item-info">
-
-                        <div class="cart-item-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="cart-item-price">
-                            ${formatPrice(item.price)}
-                        </div>
-
-                        <div class="quantity">
-
-                            <button
-                                onclick="changeQuantity(${index}, -1)">
-                                -
-                            </button>
-
-                            <span>
-                                ${item.quantity}
-                            </span>
-
-                            <button
-                                onclick="changeQuantity(${index}, 1)">
-                                +
-                            </button>
-
-                            <button
-                                class="remove-item"
-                                onclick="removeItem(${index})">
-                                Remover
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `
-        ).join("");
-
-    }
-
-
-    const totalQuantity =
-        cart.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-        );
-
-
-    const totalPrice =
-        cart.reduce(
-            (sum, item) =>
-                sum + item.price * item.quantity,
-            0
-        );
-
-
-    cartCount.textContent =
-        totalQuantity;
-
-    cartTotal.textContent =
-        formatPrice(totalPrice);
-}
-
-
-/* FINALIZAR */
-
-function checkout() {
-
-    if (cart.length === 0) {
-
-        alert("Seu carrinho está vazio.");
-
-        return;
-    }
-
-
-    let message =
-        "Olá! Quero fazer um pedido na Lifestyle Perez:%0A%0A";
-
-
-    cart.forEach(item => {
-
-        message +=
-            `${item.name} - ${item.quantity}x - ${formatPrice(item.price * item.quantity)}%0A`;
-
-    });
-
-
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum + item.price * item.quantity,
-            0
-        );
-
-
-    message +=
-        `%0ATotal: ${formatPrice(total)}`;
-
-
-    window.open(
-        "https://wa.me/SEUNUMERO?text=" + message,
-        "_blank"
-    );
-}
-
-</script>
-
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "5544997406250"; // Número formatado com DDI 55 e DDD 44
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
 </body>
 </html>
