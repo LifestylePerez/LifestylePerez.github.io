@@ -6,8 +6,8 @@
     <title>Lifestyle Perez</title>
     <style>
         :root {
-            --primary-color: #00bcd4; /* Ciano claro */
-            --secondary-color: #ffffff; /* Branco */
+            --primary-color: #00bcd4;
+            --secondary-color: #ffffff;
             --dark-color: #333333;
             --light-bg: #f4f6f8;
         }
@@ -35,7 +35,6 @@
         header h1 {
             font-size: 2rem;
             margin-bottom: 10px;
-            letter-spacing: 1px;
         }
 
         nav {
@@ -55,7 +54,6 @@
             cursor: pointer;
             border-radius: 4px;
             font-weight: bold;
-            transition: background 0.3s;
         }
 
         nav button:hover, nav button.active {
@@ -184,7 +182,6 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
-            transition: background 0.2s;
         }
 
         .btn-buy:hover {
@@ -223,15 +220,10 @@
     </nav>
 
     <div class="container">
-        <!-- Main Content Area -->
         <main>
-            <!-- Bonés -->
             <div id="bones" class="tab-content">
                 <h2 class="section-title">Bonés</h2>
-                <div class="products-grid">
-                    <!-- Adicione produtos de bonés aqui -->
-                    <p>Nenhum boné cadastrado no momento.</p>
-                </div>
+                <div class="products-grid"><p>Nenhum boné cadastrado no momento.</p></div>
             </div>
 
             <!-- Camisas de Time -->
@@ -239,45 +231,9 @@
                 <h2 class="section-title">Camisas de Time</h2>
                 <div class="products-grid">
                     
-                    <!-- Produto 1 -->
-                    <div class="product-card" data-name="Camisa Santos Charlie Brown Jr" data-price="79.90">
-                        <img src="image.png" alt="Camisa Santos Charlie Brown Jr">
-                        <div>
-                            <h3>Camisa Santos Charlie Brown Jr</h3>
-                            <div class="price">R$ 79,90</div>
-                            <div class="product-options">
-                                <label>Tamanho:
-                                    <select class="size-select">
-                                        <option value="P">P</option>
-                                        <option value="M">M</option>
-                                        <option value="G">G</option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
-                    </div>
-
-                    <!-- Produto 2 -->
-                    <div class="product-card" data-name="Camisa Palmeiras Gola Polo" data-price="79.90">
-                        <img src="image_2.png" alt="Camisa Palmeiras Gola Polo">
-                        <div>
-                            <h3>Camisa Palmeiras Gola Polo</h3>
-                            <div class="price">R$ 79,90</div>
-                            <div class="product-options">
-                                <label>Tamanho:
-                                    <select class="size-select">
-                                        <option value="GG">GG</option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
-                    </div>
-
-                    <!-- Produto 3 -->
+                    <!-- Produto 1: Manchester United -->
                     <div class="product-card" data-name="Camisa Manchester United" data-price="79.90">
-                        <img src="image_3.png" alt="Camisa Manchester United">
+                        <img src="manchester.jpg" alt="Camisa Manchester United">
                         <div>
                             <h3>Camisa Manchester United</h3>
                             <div class="price">R$ 79,90</div>
@@ -292,47 +248,54 @@
                         <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
                     </div>
 
+                    <!-- Produto 2: Palmeiras Sportingbet -->
+                    <div class="product-card" data-name="Camisa Palmeiras Sportingbet" data-price="79.90">
+                        <img src="palmeiras.jpg" alt="Camisa Palmeiras Sportingbet">
+                        <div>
+                            <h3>Camisa Palmeiras Sportingbet</h3>
+                            <div class="price">R$ 79,90</div>
+                            <div class="product-options">
+                                <label>Tamanho:
+                                    <select class="size-select">
+                                        <option value="GG">GG</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <!-- Produto 3: Charlie Brown JR -->
+                    <div class="product-card" data-name="Camisa Charlie Brown JR" data-price="79.90">
+                        <img src="santos.jpg" alt="Camisa Charlie Brown JR">
+                        <div>
+                            <h3>Camisa Charlie Brown JR</h3>
+                            <div class="price">R$ 79,90</div>
+                            <div class="product-options">
+                                <label>Tamanho:
+                                    <select class="size-select">
+                                        <option value="P">P</option>
+                                        <option value="M">M</option>
+                                        <option value="G">G</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn-buy" onclick="addToCart(this)">Adicionar ao Carrinho</button>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Polos -->
-            <div id="polos" class="tab-content">
-                <h2 class="section-title">Polos</h2>
-                <div class="products-grid">
-                    <p>Nenhuma camisa polo cadastrada no momento.</p>
-                </div>
-            </div>
-
-            <!-- Shorts -->
-            <div id="shorts" class="tab-content">
-                <h2 class="section-title">Shorts</h2>
-                <div class="products-grid">
-                    <p>Nenhum short cadastrado no momento.</p>
-                </div>
-            </div>
-
-            <!-- Moletons -->
-            <div id="moletons" class="tab-content">
-                <h2 class="section-title">Moletons</h2>
-                <div class="products-grid">
-                    <p>Nenhum moletom cadastrado no momento.</p>
-                </div>
-            </div>
-
-            <!-- Calças -->
-            <div id="calcas" class="tab-content">
-                <h2 class="section-title">Calças</h2>
-                <div class="products-grid">
-                    <p>Nenhuma calça cadastrada no momento.</p>
-                </div>
-            </div>
+            <div id="polos" class="tab-content"><h2 class="section-title">Polos</h2><div class="products-grid"><p>Nenhuma polo cadastrada.</p></div></div>
+            <div id="shorts" class="tab-content"><h2 class="section-title">Shorts</h2><div class="products-grid"><p>Nenhum short cadastrado.</p></div></div>
+            <div id="moletons" class="tab-content"><h2 class="section-title">Moletons</h2><div class="products-grid"><p>Nenhum moletom cadastrado.</p></div></div>
+            <div id="calcas" class="tab-content"><h2 class="section-title">Calças</h2><div class="products-grid"><p>Nenhuma calça cadastrada.</p></div></div>
         </main>
 
-        <!-- Carrinho de Compras -->
         <aside class="cart-sidebar">
             <h2>Carrinho</h2>
             <ul id="cart-items" class="cart-items">
-                <!-- Itens adicionados aparecerão aqui -->
                 <li style="color: #777; text-align: center; font-size: 0.9rem;">Carrinho vazio</li>
             </ul>
             <div class="cart-total">
@@ -343,56 +306,37 @@
 
     <script>
         let cart = [];
-
         function switchTab(tabId) {
-            // Esconde todas as abas
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Remove a classe active de todos os botões
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Mostra a aba selecionada e ativa o botão correspondente
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
-
         function addToCart(button) {
             const card = button.closest('.product-card');
             const name = card.getAttribute('data-name');
             const price = parseFloat(card.getAttribute('data-price'));
-            const sizeSelect = card.querySelector('.size-select');
-            const size = sizeSelect ? sizeSelect.value : 'Único';
-
+            const size = card.querySelector('.size-select').value;
             cart.push({ name, price, size });
             updateCartUI();
         }
-
         function updateCartUI() {
             const cartItemsList = document.getElementById('cart-items');
             const cartTotalPrice = document.getElementById('cart-total-price');
-
             cartItemsList.innerHTML = '';
-
             if (cart.length === 0) {
                 cartItemsList.innerHTML = '<li style="color: #777; text-align: center; font-size: 0.9rem;">Carrinho vazio</li>';
                 cartTotalPrice.textContent = '0,00';
                 return;
             }
-
             let total = 0;
-            cart.forEach((item, index) => {
+            cart.forEach(item => {
                 total += item.price;
                 const li = document.createElement('li');
                 li.className = 'cart-item';
-                li.innerHTML = `
-                    <span>${item.name} (Tam: ${item.size})</span>
-                    <span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
-                `;
+                li.innerHTML = `<span>${item.name} (${item.size})</span><span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>`;
                 cartItemsList.appendChild(li);
             });
-
             cartTotalPrice.textContent = total.toFixed(2).replace('.', ',');
         }
     </script>
