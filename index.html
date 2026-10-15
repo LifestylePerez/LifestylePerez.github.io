@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIFESTYLE PEREZ | Loja Oficial</title>
+<style>
+:root{--cyan:#55dce5;--light:#eafcfd;--dark:#087f89;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#202629;background:#fff}
+button,a{cursor:pointer}
+.top{background:var(--cyan);padding:10px;text-align:center;font-size:13px}
+header{padding:20px 14px;text-align:center;background:white}
+.logo{font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px;color:#111}
+.logo span{color:#19bdca}
+header p{font-size:12px;letter-spacing:2px;margin:7px 0}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px;background:var(--light);position:sticky;top:0;z-index:5}
+nav button{border:0;border-radius:20px;padding:10px 14px;background:white;color:#222;font-weight:bold}
+nav button.active,nav button:hover{background:var(--cyan)}
+.hero{padding:48px 18px;text-align:center;background:linear-gradient(135deg,#e8fcfd,#a7f1f4)}
+.hero h1{font-size:clamp(27px,5vw,44px);margin:0 0 12px}
+.hero p{margin:8px 0 20px}
+.btn{display:inline-block;background:#111;color:white;border:0;padding:13px 20px;border-radius:7px;font-weight:bold}
+section{padding:28px 15px;max-width:1150px;margin:auto}
+h2{text-align:center;margin:8px 0 22px}
+#products{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:15px}
+.product{border:1px solid #e6eeee;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px #0000000b}
+.photo{height:190px;background:var(--light);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:contain}
+.placeholder{font-size:52px}
+.info{padding:12px}
+.info h3{font-size:15px;min-height:36px;margin:0 0 8px}
+.price{font-weight:bold;color:var(--dark);margin:8px 0 12px}
+.add{width:100%;border:0;border-radius:6px;background:var(--cyan);padding:11px;font-weight:bold}
+.cart{background:var(--light);border-radius:12px;padding:18px}
+.cart-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #d6eeee}
+.cart-row button{border:0;background:none;color:#a22}
+#total{font-size:21px;font-weight:bold;margin:18px 0}
+input,select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbdada;border-radius:7px}
+footer{text-align:center;background:#111;color:white;padding:28px 15px;margin-top:25px}
+footer p{margin:8px}
+.small{font-size:12px;color:#687579}
+</style>
+</head>
+<body>
+
+<div class="top">LEVE 2 BONÉS E GANHE 10% DE DESCONTO</div>
+
+<header>
+  <div class="logo">LIFESTYLE <span>PEREZ</span></div>
+  <p>VISTA O CORRE, VIVA O PROPÓSITO.</p>
+</header>
+
+<nav id="nav">
+  <button class="active" data-cat="todos">Todos</button>
+  <button data-cat="bones">Bonés</button>
+  <button data-cat="times">Camisas de time</button>
+  <button data-cat="polos">Polos</button>
+  <button data-cat="camisetas">Camisetas</button>
+  <button data-cat="shorts">Shorts</button>
+  <button data-cat="casacos">Casacos / Moletons</button>
+</nav>
+
+<div class="hero">
+  <h1>SEU ESTILO. SUA IDENTIDADE.</h1>
+  <p>Encontre seu próximo visual na LIFESTYLE PEREZ.</p>
+  <a class="btn" href="#catalogo">VER CATÁLOGO</a>
+</div>
+
+<section id="catalogo">
+  <h2>NOSSO CATÁLOGO</h2>
+  <div id="products"></div>
+  <p class="small" style="text-align:center;margin-top:18px">
+    Fotos dos produtos serão adicionadas com os links que você enviar.
+  </p>
+</section>
+
+<section id="carrinho">
+  <h2>SEU CARRINHO 🛒</h2>
+  <div class="cart">
+    <div id="items">Seu carrinho está vazio.</div>
+    <div id="total">Total: R$ 0,00</div>
+
+    <label for="cliente">Seu nome</label>
+    <input id="cliente" placeholder="Digite seu nome">
+
+    <label for="cidade">Cidade de entrega</label>
+    <input id="cidade" placeholder="Ex.: Palotina - PR">
+
+    <label for="pagamento">Forma de pagamento</label>
+    <select id="pagamento">
+      <option>Pix</option>
+      <option>Dinheiro</option>
+    </select>
+
+    <button class="btn" style="width:100%" onclick="finalizar()">
+      FINALIZAR PELO WHATSAPP
+    </button>
+    <p class="small">Frete grátis em Palotina-PR. Para outras cidades, consulte o valor.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="color:white">LIFESTYLE <span>PEREZ</span></div>
+  <p>Vista o corre, viva o propósito.</p>
+  <p>Instagram / TikTok: @lifestyle.perez</p>
+  <p>Palotina - Paraná | Enviamos para outras cidades</p>
+</footer>
+
+<script>
+const produtos = [
+  {id:1,cat:"bones",nome:"Cap Cyclone Cotelê Preto / Vermelho",preco:69.90,emoji:"🧢",img:""},
+  {id:2,cat:"bones",nome:"Cap Cyclone Cotelê Branco / Azul Royal",preco:69.90,emoji:"🧢",img:""},
+  {id:3,cat:"bones",nome:"Cap Cyclone Cotelê Azul Royal / Preto",preco:69.90,emoji:"🧢",img:""},
+  {id:4,cat:"bones",nome:"Cap Cyclone Cotelê Vermelho / Preto",preco:69.90,emoji:"🧢",img:""},
+
+  {id:5,cat:"times",nome:"Camisa de Time 01",preco:79.90,emoji:"⚽",img:""},
+  {id:6,cat:"times",nome:"Camisa de Time 02",preco:79.90,emoji:"⚽",img:""},
+  {id:7,cat:"polos",nome:"Polo Clássica",preco:89.90,emoji:"👕",img:""},
+  {id:8,cat:"camisetas",nome:"Camiseta Street",preco:0,emoji:"👕",img:""},
+  {id:9,cat:"shorts",nome:"Shorts Street",preco:0,emoji:"🩳",img:""},
+  {id:10,cat:"casacos",nome:"Moletom Lifestyle",preco:169.90,emoji:"🧥",img:""}
+];
+
+const carrinho = {};
+const dinheiro = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+let categoria = "todos";
+
+function mostrarProdutos(){
+  const lista = document.getElementById("products");
+  lista.innerHTML = "";
+  produtos.filter(p=>categoria==="todos"||p.cat===categoria).forEach(p=>{
+    const card=document.createElement("article");
+    card.className="product";
+    const foto=document.createElement("div");
+    foto.className="photo";
+    if(p.img){
+      const img=document.createElement("img");
+      img.src=p.img;img.alt=p.nome;
+      foto.appendChild(img);
+    }else{
+      const emoji=document.createElement("span");
+      emoji.className="placeholder";emoji.textContent=p.emoji;
+      foto.appendChild(emoji);
+    }
+    const info=document.createElement("div");
+    info.className="info";
+    const nome=document.createElement("h3");
+    nome.textContent=p.nome;
+    const preco=document.createElement("div");
+    preco.className="price";
+    preco.textContent=p.preco>0?dinheiro(p.preco):"Preço a consultar";
+    const botao=document.createElement("button");
+    botao.className="add";
+    botao.textContent=p.preco>0?"ADICIONAR AO CARRINHO":"CONSULTAR PREÇO";
+    botao.onclick=()=>{
+      if(p.preco<=0){
+        alert("Entre em contato pelo WhatsApp para consultar o preço.");
+        return;
+      }
+      carrinho[p.id]=(carrinho[p.id]||0)+1;
+      atualizarCarrinho();
+    };
+    info.append(nome,preco,botao);
+    card.append(foto,info);
+    lista.appendChild(card);
+  });
+}
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    categoria=b.dataset.cat;
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    mostrarProdutos();
+    document.getElementById("catalogo").scrollIntoView({behavior:"smooth"});
+  };
+});
+
+function atualizarCarrinho(){
+  const area=document.getElementById("items");
+  area.innerHTML="";
+  let total=0,quantidade=0;
+  Object.keys(carrinho).forEach(id=>{
+    const p=produtos.find(x=>x.id===Number(id));
+    if(!p||!carrinho[id])return;
+    total+=p.preco*carrinho[id];
+    quantidade+=carrinho[id];
+    const linha=document.createElement("div");
+    linha.className="cart-row";
+    const texto=document.createElement("span");
+    texto.textContent=p.nome+" × "+carrinho[id]+" — "+dinheiro(p.preco*carrinho[id]);
+    const remover=document.createElement("button");
+    remover.textContent="Remover";
+    remover.onclick=()=>{delete carrinho[id];atualizarCarrinho();};
+    linha.append(texto,remover);
+    area.appendChild(linha);
+  });
+  if(!quantidade)area.textContent="Seu carrinho está vazio.";
+  document.getElementById("total").textContent="Total: "+dinheiro(total);
+}
+
+function finalizar(){
+  const itens=produtos.filter(p=>carrinho[p.id]>0);
+  if(!itens.length){alert("Adicione algum produto ao carrinho primeiro.");return;}
+  const nome=document.getElementById("cliente").value.trim();
+  const cidade=document.getElementById("cidade").value.trim();
+  const pagamento=document.getElementById("pagamento").value;
+  if(!nome||!cidade){alert("Preencha seu nome e a cidade de entrega.");return;}
+  let total=0;
+  let texto="Olá! Quero fazer um pedido na LIFESTYLE PEREZ.%0A";
+  texto+="Nome: "+encodeURIComponent(nome)+"%0ACidade: "+encodeURIComponent(cidade)+"%0A";
+  texto+="Pagamento: "+encodeURIComponent(pagamento)+"%0A%0AProdutos:%0A";
+  itens.forEach(p=>{
+    texto+="• "+encodeURIComponent(p.nome)+" x"+carrinho[p.id]+" - "+encodeURIComponent(dinheiro(p.preco))+"%0A";
+    total+=p.preco*carrinho[p.id];
+  });
+  if(itens.filter(p=>p.cat==="bones").reduce((s,p)=>s+carrinho[p.id],0)>=2){
+    const desconto=itens.filter(p=>p.cat==="bones").reduce((s,p)=>s+p.preco*carrinho[p.id],0)*0.10;
+    total-=desconto;
+    texto+="Desconto de 10% nos bonés: -"+encodeURIComponent(dinheiro(desconto))+"%0A";
+  }
+  texto+="%0ATotal dos produtos: "+encodeURIComponent(dinheiro(total));
+  texto+="%0AFrete: a confirmar, se aplicável.";
+  window.open("https://wa.me/5544997406250?text="+texto,"_blank");
+}
+
+mostrarProdutos();
+atualizarCarrinho();
+</script>
+</body>
+</html>
